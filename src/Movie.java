@@ -6,7 +6,7 @@ public abstract class Movie {
 
     private String category;
 
-    private ArrayList<String> scenes = new ArrayList<>();
+    private ArrayList<String> scenes;
 
     private int runtime;
 
@@ -19,13 +19,9 @@ public abstract class Movie {
 
     public abstract void play();
 
-    private void printInfo() {
+    public void printInfo() {
         System.out.println(getTitle());
-        System.out.printf("Runtime: %d minutes", getRuntime());
-    }
-
-    private void printScenes() {
-        scenes.forEach(s -> System.out.printf("%d %s", runtime, title));
+        System.out.printf("Category: %s%nRuntime: %d minutes%n", getCategory(), getRuntime());
     }
 
     public String getTitle() {
@@ -38,11 +34,6 @@ public abstract class Movie {
 
     public ArrayList<String> getScenes() {
         return scenes;
-    }
-
-    public Movie setScenes(ArrayList<String> scenes) {
-        this.scenes = scenes;
-        return this;
     }
 
     public String getCategory() {

@@ -30,7 +30,7 @@ public class Blockbuster {
             if (index != -1) {
                 Movie movie = MOVIES.get(index);
                 // Display movie information and ask user for confirmation to play
-                System.out.printf("%s%nCategory: %s%nRuntime: %d minutes%n", movie.getTitle(), movie.getCategory(), movie.getRuntime());
+                movie.printInfo();
                 System.out.println("Do you want to watch the movie? Y/N");
                 s = scanner.nextLine();
                 if (s.toLowerCase(Locale.ROOT).startsWith("y")) {
