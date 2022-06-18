@@ -1,27 +1,29 @@
 import java.util.ArrayList;
 
-public abstract class Movie {
+public class Movie {
+
+    private Play play;
 
     private String title;
-
-    private String category;
 
     private ArrayList<String> scenes;
 
     private int runtime;
 
-    public Movie(String title, String category, int runtime, ArrayList<String> scenes) {
+    public Movie(String title, int runtime, ArrayList<String> scenes, Play play) {
         this.title = title;
-        this.category = category;
         this.runtime = runtime;
         this.scenes = scenes;
+        this.play = play;
     }
-
-    public abstract void play();
 
     public void printInfo() {
         System.out.println(getTitle());
-        System.out.printf("Category: %s%nRuntime: %d minutes%n", getCategory(), getRuntime());
+        System.out.printf("Runtime: %d minutes%n", getRuntime());
+    }
+
+    public void play() {
+        play.play(scenes);
     }
 
     public String getTitle() {
@@ -36,7 +38,7 @@ public abstract class Movie {
         return scenes;
     }
 
-    public String getCategory() {
-        return category;
+    public Play getPlay() {
+        return play;
     }
 }

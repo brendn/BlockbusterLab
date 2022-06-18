@@ -10,17 +10,16 @@ public class BlockbusterTests {
     @Test
     void testVHS() {
         //Check constructor functionality
-        VHS vhs = new VHS("title", "category", 90, new ArrayList<String>(Arrays.asList("a","b","c")));
+        Movie movie = new Movie("title", 90, new ArrayList<>(Arrays.asList("a", "b", "c")), new VHS());
+        VHS vhs = (VHS)movie.getPlay();
         String expectedTitle = "title";
-        String expectedCategory = "category";
         int expectedRuntime = 90;
-        assertEquals(vhs.getTitle(), expectedTitle);
-        assertEquals(vhs.getCategory(), expectedCategory);
-        assertEquals(vhs.getRuntime(), expectedRuntime);
+        assertEquals(movie.getTitle(), expectedTitle);
+        assertEquals(movie.getRuntime(), expectedRuntime);
 
         //Check play function increments runtime
         assertEquals(vhs.getCurrentTime(), 0);
-        vhs.play();
+        movie.play();
         assertEquals(vhs.getCurrentTime(), 1);
 
         //Check rewind direct call functionality
@@ -28,8 +27,8 @@ public class BlockbusterTests {
         assertEquals(vhs.getCurrentTime(), 0);
 
         //Check automatic rewind functionality
-        for (int i = 0; i < vhs.getScenes().size() + 1; i++) {
-            vhs.play();
+        for (int i = 0; i < movie.getScenes().size() + 1; i++) {
+            movie.play();
         }
         assertEquals(vhs.getCurrentTime(), 0);
     }
@@ -37,7 +36,7 @@ public class BlockbusterTests {
     @Test
     void testDVD() {
         //Check constructor functionality
-        DVD dvd = new DVD("title", "category", 90, new ArrayList<String>(Arrays.asList("a","b","c")));
+        Movie dvd = new Movie("title", 90, new ArrayList<>(Arrays.asList("a", "b", "c")), new DVD());
         String expectedTitle = "title";
         int expectedRuntime = 90;
         assertEquals(dvd.getTitle(), expectedTitle);
